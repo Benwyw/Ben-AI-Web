@@ -11,9 +11,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @EnableAspectJAutoProxy(proxyTargetClass = true, exposeProxy = true)
 @EnableFeignClients(basePackages = {"com.benwyw"})
 @EnableAsync
-public class CountBootApplication implements WebMvcConfigurer {
+public class BenAIWebApplication implements WebMvcConfigurer {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CountBootApplication.class, args);
+		SpringApplication.run(BenAIWebApplication.class, args);
 	}
 }

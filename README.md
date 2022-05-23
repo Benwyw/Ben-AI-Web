@@ -1,5 +1,5 @@
-<h3 align="center">CountBoot</h3>
-<p align="center">Counts everything</p>
+<h3 align="center">BenAIWeb</h3>
+<p align="center">Ben AI Web Application</p>
 
 
 <!-- TABLE OF CONTENTS -->
@@ -19,4 +19,4 @@
 ## Introduction
 
 ### Background
-It counts... [x](https://x)
+... [x](https://x)
