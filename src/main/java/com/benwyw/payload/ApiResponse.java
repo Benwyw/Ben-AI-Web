@@ -19,13 +19,13 @@ public class ApiResponse<T> {
 	private T data;
 	
 	public ApiResponse(T data) {
-		this.setData(data);
+		this.data =data;
 	}
 	
 	public ApiResponse(Boolean success, String message, String code) {
 		super();
-		this.setSuccess(success);
-		this.setMessage(message);
-		this.setCode(code);
+		this.success = success;
+		this.message = message;
+		this.code = code;
 	}
 }
