@@ -26,4 +26,26 @@ public class CountController {
 	public ResponseEntity<ApiResponse<String>> getTest() {
 		return ResponseEntity.ok(new ApiResponse<>(countService.getTest()));
 	}
+
+	@GetMapping("/getTest2")
+	@ApiOperation(value = "Get test")
+	public String getTest2() {
+
+		return "1";
+	}
+
+	@GetMapping("/getTest3")
+	@ApiOperation(value = "Get test")
+	public ResponseEntity<String> getTest3() {
+
+		return ResponseEntity.ok("Test");
+	}
+
+	@GetMapping("/getTest4")
+	@ApiOperation(value = "Get test")
+	public ResponseEntity<ApiResponse<String>> getTest4() {
+		//ApiResponse
+
+		return ResponseEntity.ok(new ApiResponse<>("1"));
+	}
 }
