@@ -11,6 +11,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.opencsv.CSVWriter;
+
 import lombok.extern.slf4j.Slf4j;
 
 @Service
@@ -29,6 +31,8 @@ public class CsvService {
 		List<String> dummyDataBody = new ArrayList<>();
 		List<String> dummyDataFooter = new ArrayList<>();
 		
+		List<String[]> dummyDataCombined = new ArrayList<>();
+		
 		dummyDataHeader.add("Header1");
 		dummyDataHeader.add("Header2");
 		dummyDataHeader.add("Header3");
@@ -44,32 +48,20 @@ public class CsvService {
 		dummyDataFooter.add("Footer4");
 		dummyDataFooter.add("Footer5");
 		
+		dummyDataCombined.add(dummyDataHeader.toArray(String[]::new));
+		dummyDataCombined.add(dummyDataBody.toArray(String[]::new));
+		dummyDataCombined.add(dummyDataFooter.toArray(String[]::new));
+		
 		// generate CSV
 		File dummyCsv = new File("src/csv/dummy.csv");
 		if (dummyCsv.getParentFile() == null || !dummyCsv.getParentFile().exists())
 			dummyCsv.getParentFile().mkdirs();
 		dummyCsv.createNewFile();
-		FileWriter writer = new FileWriter(dummyCsv, false);
+		FileWriter fileWriter = new FileWriter(dummyCsv, false);
+		CSVWriter writer = new CSVWriter(fileWriter);
 		
 		try{
-			writer.append(dummyConstHeader);
-			for (String line : dummyDataHeader) {
-				writer.append(line);
-			}
-			
-			writer.append("\n");
-			writer.append(dummyConstBody);
-			
-			for (String line : dummyDataBody) {
-				writer.append(line);
-			}
-			
-			writer.append("\n");
-			writer.append(dummyConstFooter);
-			
-			for (String line : dummyDataFooter) {
-				writer.append(line);
-			}
+	        writer.writeAll(dummyDataCombined);
 		}
 
 		catch(Exception e){

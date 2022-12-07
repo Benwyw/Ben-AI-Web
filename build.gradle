@@ -36,6 +36,8 @@ dependencies {
 	implementation 'org.springframework:spring-webmvc:5.3.20'
 	// https://mvnrepository.com/artifact/org.springframework/spring-context
 	implementation 'org.springframework:spring-context:5.3.20'
+	
+	implementation 'com.opencsv:opencsv:4.1'
 }
 
 tasks.named('test') {
