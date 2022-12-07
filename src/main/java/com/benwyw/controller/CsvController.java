@@ -2,13 +2,13 @@ package com.benwyw.controller;
 
 import java.io.IOException;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.benwyw.payload.ApiResponse;
 import com.benwyw.service.CsvService;
 
 import io.swagger.annotations.ApiOperation;
@@ -23,7 +23,9 @@ public class CsvController {
 
 	@GetMapping("/create")
 	@ApiOperation(value = "Create CSV")
-	public void getTest() throws IOException {
-		csvService.create();
+	public byte[] getTest(HttpServletResponse response) throws IOException {
+		response.setContentType("application/csv");      
+		response.setHeader("Content-Disposition", "attachment; filename=\"generated.csv\""); 
+		return csvService.create();
 	}
 }

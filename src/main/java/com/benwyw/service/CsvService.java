@@ -1,6 +1,7 @@
 package com.benwyw.service;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ import lombok.extern.slf4j.Slf4j;
 @Transactional
 @Slf4j
 public class CsvService {
-	public void create() throws IOException {
+	public byte[] create() throws IOException {
 		final Logger log = LoggerFactory.getLogger(CsvService.class.getName());
 		
 		// init dummy data
@@ -76,5 +77,12 @@ public class CsvService {
 		   }
 		}
 		log.info("Completed");
+		
+		FileInputStream fl = new FileInputStream(dummyCsv);
+        byte[] arr = new byte[(int)dummyCsv.length()];
+        fl.read(arr);
+        fl.close();
+		
+		return arr;
 	}
 }
