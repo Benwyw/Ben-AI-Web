@@ -21,11 +21,19 @@ public class CsvController {
 	@Autowired
 	CsvService csvService;
 
-	@GetMapping("/create")
+	@GetMapping("/create/csv")
 	@ApiOperation(value = "Create CSV")
 	public byte[] getTest(HttpServletResponse response) throws IOException {
 		response.setContentType("application/csv");      
-		response.setHeader("Content-Disposition", "attachment; filename=\"generated.csv\""); 
+		response.setHeader("Content-Disposition", "attachment; filename=\"dummy.csv\""); 
 		return csvService.create();
+	}
+	
+	@GetMapping("/create/zip")
+	@ApiOperation(value = "Create ZIP contained multiple CSV")
+	public byte[] zipTest(HttpServletResponse response) throws IOException {
+		response.setContentType("application/zip");      
+		response.setHeader("Content-Disposition", "attachment; filename=\"dummy.zip\""); 
+		return csvService.toZip();
 	}
 }
